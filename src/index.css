@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta Institucional: Branco Gelo (#F8FAFC) + Laranja Queimado (#EA580C) */
+  --background: 210 40% 98%;          /* #F8FAFC - Branco Gelo */
+  --foreground: 222 47% 11%;          /* #0F172A - Ardósia Profunda (contraste > 15:1) */
+
+  --surface: 210 33% 95%;             /* #EEF3F8 - Superfície Estrutural Sutil */
+  --surface-elevated: 0 0% 100%;      /* #FFFFFF - Cartão Clínico Elevado */
+  --surface-muted: 214 28% 92%;       /* #E3E9F2 - Superfície Secundária */
+
+  --muted-foreground: 215 20% 36%;    /* #4A5A70 - Texto Secundário WCAG AA (> 6.5:1) */
+  --subtle-foreground: 215 16% 45%;   /* #617187 - Metadados WCAG AA (> 4.7:1) */
+
+  --primary: 20.5 90.2% 48.2%;        /* #EA580C - Laranja Queimado Oficial */
+  --primary-deep: 17.5 88.3% 40.4%;   /* #C2410C - Laranja Queimado AA para texto/botões (5.02:1 com branco) */
+  --primary-soft: 24 95% 95%;         /* #FFF1E8 - Realce sutil */
+  --primary-foreground: 210 40% 98%;  /* #F8FAFC - Branco Gelo sobre Laranja Queimado */
+
+  --border: 214 25% 87%;              /* #D5DFEB - Linha Hairline 1px */
+  --border-strong: 214 22% 76%;       /* #B5C3D4 - Divisores de destaque */
+
+  --success: 158 64% 32%;             /* #1D855E - Confirmação clínica */
+  --danger: 0 72% 45%;                /* #C52222 - Erro de validação */
+
+  /* Tokens de Gradiente e Profundidade */
+  --gradient-canvas: radial-gradient(1200px 680px at 82% -8%, hsl(20.5 90.2% 48.2% / 0.065), transparent 62%),
+                     radial-gradient(900px 540px at 10% 18%, hsl(214 45% 88% / 0.45), transparent 65%);
+  --gradient-accent: linear-gradient(135deg, hsl(20.5 90.2% 48.2%) 0%, hsl(17.5 88.3% 40.4%) 100%);
+  --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 38% 97%) 100%);
+
+  --shadow-hairline: 0 1px 2px 0 hsl(222 47% 11% / 0.04);
+  --shadow-card: 0 12px 32px -12px hsl(222 47% 11% / 0.08), 0 2px 6px -1px hsl(222 47% 11% / 0.03);
+  --shadow-elevated: 0 24px 48px -16px hsl(222 47% 11% / 0.12), 0 4px 12px -2px hsl(20.5 90.2% 48.2% / 0.08);
+  --shadow-accent: 0 14px 28px -8px hsl(20.5 90.2% 48.2% / 0.28);
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-surface: hsl(var(--surface));
+  --color-surface-elevated: hsl(var(--surface-elevated));
+  --color-surface-muted: hsl(var(--surface-muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-subtle-foreground: hsl(var(--subtle-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-deep: hsl(var(--primary-deep));
+  --color-primary-soft: hsl(var(--primary-soft));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-border: hsl(var(--border));
+  --color-border-strong: hsl(var(--border-strong));
+  --color-success: hsl(var(--success));
+  --color-danger: hsl(var(--danger));
+
+  --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    font-family: var(--font-sans);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: hsl(var(--background));
+    background-image: var(--gradient-canvas);
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.18);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Textura sutil de grão mineral para sofisticação tátil */
+.clinical-grain {
+  background-image: radial-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
